@@ -1,3 +1,5 @@
+# Задача № 1, 2
+
 from pprint import pprint
 
 
@@ -36,3 +38,21 @@ def get_shop_list_by_dishes(dishes, person_count):
 
 
 pprint(get_shop_list_by_dishes(['Запеченный картофель', 'Салат'], 2))
+
+# Задача № 3
+
+files = ['1.txt', '2.txt', '3.txt']
+file_filling = []
+
+for file_name in files:
+    with open(file_name, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+        file_filling.append((file_name, len(lines), lines))
+
+file_filling.sort(key=lambda x: x[1])
+
+with open('Common_file.txt', 'w', encoding='utf-8') as new_file:
+    for file_name, num_lines, lines in file_filling:
+        new_file.write(f'{file_name}\n{num_lines}\n')
+        new_file.writelines(lines)
+        new_file.write('\n')
